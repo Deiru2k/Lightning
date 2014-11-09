@@ -4,6 +4,7 @@
 
 * Check out source code to the folder of your desire
 * Make sure that you have your RethinkDB instance running on the same machine.
+* Edit db and app settings in ```app.py```
 * Create VirtualEnv (http://docs.python-guide.org/en/latest/dev/virtualenvs/) and source into it
 * Run
 ```bash
