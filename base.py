@@ -12,14 +12,20 @@ from exceptions import SchemaException
 from db import Database
 import os
 
+# DATABASE SETTINGS, EDIT THEM BEFORE INSTALLING.
+DB_NAME = "EDIT_ME"  # Database Name for your future imageboard
+DB_HOST = "localhost"  # Database host. Usually just localhost. Change if you run your RethinkDB on different host
+DB_PORT = 28015  # Database host. Change to your RethinkDB instance port. Leave unchanged for default port.
+APP_PORT = 8080  # Application port
+
 
 class BaseHandler(CorsMixin, RequestHandler):
 
     CORS_ORIGIN = "*"
     CORS_HEADERS = 'Content-Type'
-    CORS_METHODS = "GET,POST,PUT,OPTIONS"
+    CORS_METHODS = "GET,POST,PUT,OPTIONS,DELETE"
 
-    db = Database("mikotoboard")
+    db = Database(DB_HOST, DB_PORT, DB_NAME)
     per_page = 10
     path = os.path.dirname(__file__)
 

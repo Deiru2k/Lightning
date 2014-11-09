@@ -1,6 +1,7 @@
 from tornado.web import Application
 from tornado.ioloop import IOLoop
 from routes import handlers
+from base import APP_PORT
 
 
 app = Application(
@@ -14,6 +15,6 @@ if __name__ == '__main__':
     for route in handlers:
         print("%s -> %s" % (route[1].__name__, route[0]))
 
-    app.listen(8080)
+    app.listen(APP_PORT)
     IOLoop.instance().start()
 

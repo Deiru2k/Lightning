@@ -8,5 +8,6 @@ handlers = [
     (r'/v1/boards/(\w+)', boards.BoardHandler),
     (r'/v1/boards/(\w+)/threads', threads.ThreadsHandler),
     (r'/v1/boards/(\w+)/threads/(.*)', threads.ThreadHandler),
-    (r'/v1/posts', posts.PostsHandler)
+    #(r'/v1/posts', posts.PostsHandler)
+    (r'/v1/posts/(.*)', posts.PostHandler)
 ]

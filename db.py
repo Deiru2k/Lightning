@@ -4,9 +4,9 @@ from tornado.gen import coroutine
 
 class Database:
 
-    def __init__(self, db_name):
+    def __init__(self, db_host, db_port, db_name):
 
-        self.connection = r.connect()
+        self.connection = r.connect(host=db_host, port=db_port)
         self.db = r.db(db_name)
         self.boards = self.db.table('boards')
         self.posts = self.db.table('posts')
