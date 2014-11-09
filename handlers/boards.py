@@ -2,19 +2,17 @@ from tornado.gen import coroutine
 from base import BaseHandler
 from schemas.boards import board_multiple, board_single
 import rethinkdb as r
+from schemas.posts import post_single
 
 
 class BoardsHandler(BaseHandler):
-
-    input_schema = board_single
-    output_schema = board_multiple
 
     @coroutine
     def get(self):
 
         query = self.db.boards
         boards = yield self.db.run_query(query)
-        self.respond(response=boards)
+        self.respond(boards, board_multiple)
 
     @coroutine
     def post(self):
@@ -45,7 +43,7 @@ class BoardHandler(BaseHandler):
         if not board:
             self.error(code=404, message="Board not found", data=board_id)
             return
-        self.respond(board)
+        self.respond(board, board_single)
 
 
     @coroutine
