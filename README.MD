@@ -6,11 +6,11 @@
 * Make sure that you have your RethinkDB instance running on the same machine.
 * Create VirtualEnv (http://docs.python-guide.org/en/latest/dev/virtualenvs/) and source into it
 * Run
-    ```bash
+    bash```
     $ pip install -r requirements.txt
     ```
 * Run
-    ```bash
+    bash```
     $ python install.py
     ```
 * Start app.py and daemonize it using screen or your favourite daemonizer.
