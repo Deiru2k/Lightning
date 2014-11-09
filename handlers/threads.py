@@ -64,7 +64,7 @@ class ThreadHandler(BaseHandler):
     @coroutine
     def get(self, board, thread_id):
 
-        query = self.db.posts.get(thread_id)
+        query = self.db.posts.get(thread_id).without('password')
         thread = yield self.db.run_query(query)
         query = self.db.posts.get_all(thread_id, index='thread').without('password')
         posts = yield self.db.run_query(query)
