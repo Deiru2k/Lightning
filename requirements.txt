@@ -1,0 +1,6 @@
+Pillow==2.6.1
+certifi==14.05.14
+jsonschema==2.4.0
+rethinkdb==1.15.0-1
+tornado==3.2.2
+tornado-cors==0.4.0
