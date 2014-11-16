@@ -13,10 +13,11 @@ from db import Database
 import os
 
 # DATABASE SETTINGS, EDIT THEM BEFORE INSTALLING.
-DB_NAME = "EDIT_ME"  # Database Name for your future imageboard
+DB_NAME = "mikotoboard"  # Database Name for your future imageboard
 DB_HOST = "localhost"  # Database host. Usually just localhost. Change if you run your RethinkDB on different host
 DB_PORT = 28015  # Database host. Change to your RethinkDB instance port. Leave unchanged for default port.
 APP_PORT = 8080  # Application port
+AUTH = False  # Enable or disable invite-based access mode
 
 
 class BaseHandler(CorsMixin, RequestHandler):
@@ -38,6 +39,14 @@ class BaseHandler(CorsMixin, RequestHandler):
                 self.error(code=400, message="JSON input is malformed")
                 return
             setattr(self.request, 'data', data)
+
+        if AUTH:
+            query = self.db.users.get(self.request.headers.get('Authorization'))
+            user = self.db.run_query(query)
+            if not user:
+                self.error(code=401, message="Invalid User Token")
+                return
+            setattr(self, 'user', user)
 
 
     @coroutine
