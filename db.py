@@ -10,6 +10,8 @@ class Database:
         self.db = r.db(db_name)
         self.boards = self.db.table('boards')
         self.posts = self.db.table('posts')
+        self.invites = self.db.table('invites')
+        self.users = self.db.table('users')
 
     @coroutine
     def run_query(self, query) -> (list, object):
