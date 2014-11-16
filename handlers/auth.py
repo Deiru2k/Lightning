@@ -3,7 +3,7 @@ from tornado.gen import coroutine
 import rethinkdb as r
 
 
-class SignUpHandler(BaseHandler):
+class RedeemInviteHandler(BaseHandler):
 
     @coroutine
     def post(self):
